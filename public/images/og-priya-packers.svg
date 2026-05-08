@@ -1,0 +1,14 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#111820"/>
+  <rect x="70" y="70" width="1060" height="490" rx="24" fill="#FBFAF8"/>
+  <rect x="118" y="118" width="132" height="132" rx="14" fill="#0B2341"/>
+  <text x="184" y="198" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" fill="#FFFFFF">PP</text>
+  <text x="304" y="158" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" fill="#111820">Priya Packers</text>
+  <text x="306" y="214" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#9A6B30" letter-spacing="7">CORRUGATED PACKAGING</text>
+  <text x="118" y="358" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700" fill="#111820">Sustainable Corrugated</text>
+  <text x="118" y="424" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700" fill="#111820">Packaging Solutions</text>
+  <rect x="780" y="296" width="214" height="160" fill="#C8AA73"/>
+  <path d="M780 296L832 250H1046L994 296H780Z" fill="#D8BE91"/>
+  <path d="M994 296L1046 250V410L994 456V296Z" fill="#9A6B30"/>
+  <path d="M832 250V456" stroke="#8D632F" stroke-width="7"/>
+</svg>

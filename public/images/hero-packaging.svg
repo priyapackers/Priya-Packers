@@ -1,0 +1,35 @@
+<svg width="960" height="680" viewBox="0 0 960 680" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Corrugated packaging manufacturing placeholder</title>
+  <desc id="desc">Premium industrial illustration of corrugated boxes, kraft sheets, and a packaging factory floor.</desc>
+  <rect width="960" height="680" fill="#F7F1E8"/>
+  <rect x="0" y="0" width="960" height="120" fill="#FFFFFF"/>
+  <rect x="68" y="116" width="824" height="448" rx="18" fill="#FFFFFF" stroke="#DED6CA" stroke-width="2"/>
+  <path d="M104 496H856" stroke="#DED6CA" stroke-width="2"/>
+  <path d="M116 196H402V496H116V196Z" fill="#111820"/>
+  <path d="M142 224H376V496H142V224Z" fill="#1F2B38"/>
+  <path d="M166 258H220V496H166V258Z" fill="#C8AA73"/>
+  <path d="M244 258H298V496H244V258Z" fill="#C8AA73"/>
+  <path d="M322 258H352V496H322V258Z" fill="#C8AA73"/>
+  <path d="M476 182H760V496H476V182Z" fill="#0B2341"/>
+  <path d="M512 226H724V496H512V226Z" fill="#12345D"/>
+  <path d="M538 262H590V496H538V262Z" fill="#C8AA73"/>
+  <path d="M620 262H672V496H620V262Z" fill="#C8AA73"/>
+  <path d="M724 344L856 392V496H724V344Z" fill="#303842"/>
+  <path d="M104 496H856V552H104V496Z" fill="#E4D4BE"/>
+  <path d="M162 408H326V496H162V408Z" fill="#B88245"/>
+  <path d="M162 408L204 374H368L326 408H162Z" fill="#C8AA73"/>
+  <path d="M326 408L368 374V462L326 496V408Z" fill="#9A6B30"/>
+  <path d="M430 388H610V496H430V388Z" fill="#C8AA73"/>
+  <path d="M430 388L478 350H658L610 388H430Z" fill="#D8BE91"/>
+  <path d="M610 388L658 350V458L610 496V388Z" fill="#9A6B30"/>
+  <path d="M648 424H792V496H648V424Z" fill="#B88245"/>
+  <path d="M648 424L686 392H830L792 424H648Z" fill="#C8AA73"/>
+  <path d="M792 424L830 392V464L792 496V424Z" fill="#9A6B30"/>
+  <path d="M204 374V496" stroke="#8D632F" stroke-width="4"/>
+  <path d="M478 350V496" stroke="#8D632F" stroke-width="4"/>
+  <path d="M686 392V496" stroke="#8D632F" stroke-width="4"/>
+  <path d="M128 552H832" stroke="#0B2341" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="200" cy="552" r="18" fill="#111820"/>
+  <circle cx="760" cy="552" r="18" fill="#111820"/>
+  <path d="M100 118C180 86 250 84 340 118C430 152 520 148 610 118C700 88 790 86 862 118" stroke="#C8AA73" stroke-width="8" stroke-linecap="round"/>
+</svg>
