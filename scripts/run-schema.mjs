@@ -9,6 +9,8 @@ if (!databaseUrl) {
 
 const url = new URL(databaseUrl);
 url.protocol = "https:";
+url.username = "";
+url.password = "";
 url.pathname = "/sql";
 url.search = "";
 url.hash = "";
