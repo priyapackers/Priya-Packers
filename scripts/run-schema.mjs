@@ -1,4 +1,8 @@
+import dotenv from "dotenv";
 import { readFileSync } from "node:fs";
+import { neon } from "@neondatabase/serverless";
+
+dotenv.config({ path: ".env.local" });
 
 const databaseUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL;
 
@@ -7,30 +11,22 @@ if (!databaseUrl) {
   process.exit(1);
 }
 
-const url = new URL(databaseUrl);
-url.protocol = "https:";
-url.username = "";
-url.password = "";
-url.pathname = "/sql";
-url.search = "";
-url.hash = "";
-
+const sql = neon(databaseUrl);
 const schema = readFileSync("db/schema.sql", "utf8");
-const auth = Buffer.from(`${decodeURIComponent(new URL(databaseUrl).username)}:${decodeURIComponent(new URL(databaseUrl).password)}`).toString("base64");
 
-const response = await fetch(url, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Basic ${auth}`,
-    "Neon-Connection-String": databaseUrl,
-  },
-  body: JSON.stringify({ query: schema, params: [] }),
-});
+const statements = schema
+  .split(";")
+  .map((statement) => statement.trim())
+  .filter(Boolean);
 
-if (!response.ok) {
-  console.error(await response.text());
+try {
+  for (const statement of statements) {
+    await sql.query(statement);
+  }
+
+  console.log("Database schema applied.");
+} catch (error) {
+  console.error("Failed to apply database schema:");
+  console.error(error);
   process.exit(1);
 }
-
-console.log("Database schema applied.");
