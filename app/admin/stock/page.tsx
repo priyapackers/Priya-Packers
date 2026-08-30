@@ -68,7 +68,11 @@ export default async function StockPage({ searchParams }: { searchParams: Promis
       <div className="mt-8 overflow-x-auto rounded-lg border border-[#e6e0d7] bg-white">
         <table className="min-w-[980px] w-full text-left text-sm">
           <thead className="bg-[#f2eadf] text-xs uppercase tracking-[0.12em] text-[#303842]">
-            <tr>{["Reel ID", "Date", "GSM", "Reel Size", "Original KG", "Remaining KG", "Source", "Status", "Company"].map((h) => <th key={h} className="px-4 py-3">{h}</th>)}</tr>
+            <tr>
+              {["Reel ID", "Date", "GSM", "Reel Size", "Original KG", "Remaining KG", "Source", "Status", "Company", "Action"].map((h) => (
+                <th key={h} className="px-4 py-3">{h}</th>
+              ))}
+            </tr>
           </thead>
           <tbody className="divide-y divide-[#e6e0d7]">
             {reels.map((reel) => (
@@ -76,7 +80,17 @@ export default async function StockPage({ searchParams }: { searchParams: Promis
                 <td className="px-4 py-4 font-bold text-[#0b2341]"><Link href={`/admin/stock/${reel.id}`}>{reel.reelId}</Link></td>
                 <td className="px-4 py-4">{reel.date}</td><td className="px-4 py-4">{reel.gsm}</td><td className="px-4 py-4">{reel.reelSize}</td>
                 <td className="px-4 py-4">{reel.originalWeightKg.toFixed(2)}</td><td className="px-4 py-4">{reel.remainingWeightKg.toFixed(2)}</td>
-                <td className="px-4 py-4">{reel.source}</td><td className="px-4 py-4">{statusLabels[reel.status]}</td><td className="px-4 py-4">{reel.lastCompanyName || "—"}</td>
+                <td className="px-4 py-4">{reel.source}</td>
+                <td className="px-4 py-4">{statusLabels[reel.status]}</td>
+                <td className="px-4 py-4">{reel.lastCompanyName || "—"}</td>
+                <td className="px-4 py-4">
+                  <Link
+                    href={`/admin/stock/${reel.id}`}
+                    className="inline-flex rounded-md border border-[#0b2341] px-3 py-2 text-xs font-semibold text-[#0b2341] hover:bg-[#0b2341] hover:text-white"
+                  >
+                    Update
+                  </Link>
+                </td>
               </tr>
             ))}
           </tbody>
