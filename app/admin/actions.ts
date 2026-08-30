@@ -140,3 +140,154 @@ export async function markUsedAction(id: string, formData: FormData) {
   revalidatePath("/admin/stock");
   revalidatePath(`/admin/stock/${id}`);
 }
+
+export async function createClientAction(formData: FormData) {
+  await requireAdmin();
+
+  const name = text(formData, "name");
+
+  if (!name) {
+    throw new Error("Company name is required.");
+  }
+
+  await sql(
+    `
+      INSERT INTO clients (name)
+      VALUES ($1)
+    `,
+    [name],
+  );
+
+  revalidatePath("/admin/clients");
+  redirect("/admin/clients");
+}
+
+export async function createClientItemAction(
+  clientId: string,
+  formData: FormData,
+) {
+  await requireAdmin();
+
+  const itemName = text(formData, "itemName");
+  const length = positiveNumber(formData, "length");
+  const breadth = positiveNumber(formData, "breadth");
+  const height = positiveNumber(formData, "height");
+  const bandhan = Number(formData.get("bandhan"));
+  const ply = Number(formData.get("ply"));
+  const flapKind = text(formData, "flapKind");
+  const price = nonNegativeNumber(formData, "price");
+
+  if (!itemName) {
+    throw new Error("Item name is required.");
+  }
+
+  if (![1, 2].includes(bandhan)) {
+    throw new Error("Bandhan must be 1 or 2.");
+  }
+
+  if (![3, 5, 7].includes(ply)) {
+    throw new Error("Ply must be 3, 5, or 7.");
+  }
+
+  if (!["center", "over"].includes(flapKind)) {
+    throw new Error("Flap kind must be center or over.");
+  }
+
+  await sql(
+    `
+      INSERT INTO client_items (
+        client_id,
+        item_name,
+        length,
+        breadth,
+        height,
+        bandhan,
+        ply,
+        flap_kind,
+        price
+      )
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+    `,
+    [
+      clientId,
+      itemName,
+      length,
+      breadth,
+      height,
+      bandhan,
+      ply,
+      flapKind,
+      price,
+    ],
+  );
+
+  revalidatePath(`/admin/clients/${clientId}`);
+  redirect(`/admin/clients/${clientId}`);
+}
+
+export async function updateClientItemAction(
+  id: string,
+  clientId: string,
+  formData: FormData,
+) {
+  await requireAdmin();
+
+  const itemName = text(formData, "itemName");
+  const length = positiveNumber(formData, "length");
+  const breadth = positiveNumber(formData, "breadth");
+  const height = positiveNumber(formData, "height");
+  const bandhan = Number(formData.get("bandhan"));
+  const ply = Number(formData.get("ply"));
+  const flapKind = text(formData, "flapKind");
+  const price = nonNegativeNumber(formData, "price");
+
+  if (!itemName) {
+    throw new Error("Item name is required.");
+  }
+
+  if (![1, 2].includes(bandhan)) {
+    throw new Error("Bandhan must be 1 or 2.");
+  }
+
+  if (![3, 5, 7].includes(ply)) {
+    throw new Error("Ply must be 3, 5, or 7.");
+  }
+
+  if (!["center", "over"].includes(flapKind)) {
+    throw new Error("Flap kind must be center or over.");
+  }
+
+  await sql(
+    `
+      UPDATE client_items
+      SET
+        item_name = $1,
+        length = $2,
+        breadth = $3,
+        height = $4,
+        bandhan = $5,
+        ply = $6,
+        flap_kind = $7,
+        price = $8,
+        updated_at = now()
+      WHERE id = $9
+        AND client_id = $10
+    `,
+    [
+      itemName,
+      length,
+      breadth,
+      height,
+      bandhan,
+      ply,
+      flapKind,
+      price,
+      id,
+      clientId,
+    ],
+  );
+
+  revalidatePath(`/admin/clients/${clientId}`);
+  revalidatePath(`/admin/clients/${clientId}/items/${id}`);
+  redirect(`/admin/clients/${clientId}`);
+}
