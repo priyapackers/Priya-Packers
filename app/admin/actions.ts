@@ -40,7 +40,7 @@ export async function loginAction(formData: FormData) {
   }
 
   await createAdminSession();
-  redirect("/admin/stock");
+  redirect("/admin");
 }
 
 export async function logoutAction() {
